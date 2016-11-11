@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dog Name Generator</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+	<header class="wrapper">
+		<img src="images/headerWeek4.png" alt="trust us to name your dog">
+	</header>
+	<main class="wrapper">
+		<h2>help us help you - definitely trust us to give your best friend a <em>truly</em> amazing name. </h2>
+
+	<!-- FORM STARTS -->
+		<form>
+			<fieldset class="occupation">
+				<h3>Who are you?</h3>
+				<div class="flexContainer">
+					<label for="option1"><p>programmer</p></label>
+					<input type="radio" name="occupation" id="option1" value="programmer" required>
+
+					<label for="option2"><p>foodie</p></label>
+					<input type="radio" name="occupation" id="option2" value="foodie" required>
+
+					<label for="option3"><p>athlete</p></label>
+					<input type="radio" name="occupation" id="option3" value="athlete" required>
+
+					<label for="option4"><p>artist</p></label>
+					<input type="radio" name="occupation" id="option4" value="artist" required>
+					
+					<label for="option5"><p>identity-crisis</p></label>
+					<input type="radio" name="occupation" id="option5" value="identityCrisis" required>
+				</div>
+			</fieldset>
+			<fieldset class="Type">
+				<h3>What kind of name do you want?</h3>
+				<div class="flexContainer typeContainer">
+					<label for="Type"><p>g-rated</p></label>
+					<input type="radio" name="Type" id="Type" value="G-Rated" required>
+
+					<label for="Funny"><p>funny</p></label>
+					<input type="radio" name="Type" id="Funny" value="Funny">
+
+					<label for="wtf"><p>wtf</p></label>
+					<input type="radio" name="Type" id="wtf" value="wtf">
+				</div>
+			</fieldset>
+			<fieldset class="size">
+				<h3> What size is your dog?</h3>
+				<div class="flexContainer sizeContainer">
+					<label for="Small"><p>small</p></label>
+					<input type="radio" name="size" id="Small" value="small" required>
+					<label for="Large"><p>large</p></label>
+					<input type="radio" name="size" id="Large" value="large">
+				</div>
+			</fieldset>
+			<div class="submitContainer">
+				<input type="submit" value="name my dog">
+				<!-- <input type="submit" value="randomize!"> -->
+			</div>
+		</form>
+	<!-- FORM ENDS -->
+
+	</main>
+	<section class="results wrapper">
+		<!-- <button>randomize!</button> -->
+	</section>
+	<footer>
+		<p>share this with the world <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></p>
+		<p>// made by Christina Spencer & Erin Carrieres, 2016.</p>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+	<script src="script.js"></script>
+	<script src="https://use.fontawesome.com/f653ee54f9.js"></script>
+</body>
+</html>
