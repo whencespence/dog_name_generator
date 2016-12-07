@@ -2,80 +2,53 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Dog Name Generator</title>
-	<link rel="stylesheet" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+	<title>Tom Hanks forever</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,500|Open+Sans+Condensed:300" rel="stylesheet">
 </head>
 <body>
+	<div class="overlay">
+	<div class="wrapper">
+		<main>
+			<header>
+				<h1>tom hanks</h1>
+				<h2>Forever</h2>
+			</header>
+			<p class="tagline">He's blessed us by appearing in nearly 100 movies, TV shows or theatre productions. <br>Let me help you pick a movie to watch.</p>
+			<form action="" method="POST">
+				<fieldset class="question">
+					<h3>So, how do you want T-Hanks to make you feel?</h3>
+					<div class="flex_container">
+						<input type="radio" name="question" id="family" value="10751" required>
+						<label for="family"><p>uplifted</p></label>
 
-<!-- HEADER -->
-	<header class="wrapper">
-		<img src="images/headerWeek4.png" alt="trust us to name your dog">
-	</header>
-	<main class="wrapper">
-		<h2>help us help you - definitely trust us to give your best friend a <em>truly</em> amazing name. </h2>
+						<input type="radio" name="question" id="documentary" value="99" required>
+						<label for="documentary"><p>curious</p></label>
 
-	<!-- FORM STARTS -->
-		<form>
-			<fieldset class="occupation">
-				<h3>Who are you?</h3>
-				<div class="flexContainer">
-					<label for="option1"><p>programmer</p></label>
-					<input type="radio" name="occupation" id="option1" value="programmer" required>
+						<input type="radio" name="question" id="action" value="28" required>
+						<label for="action"><p>pumped</p></label>
 
-					<label for="option2"><p>foodie</p></label>
-					<input type="radio" name="occupation" id="option2" value="foodie" required>
+						<input type="radio" name="question" id="drama" value="18" required>
+						<label for="drama"><p>impassioned</p></label>
 
-					<label for="option3"><p>athlete</p></label>
-					<input type="radio" name="occupation" id="option3" value="athlete" required>
+						<input type="radio" name="question" id="thriller" value="53" required>
+						<label for="thriller"><p>edgy</p></label>
+					</div>
+						<input type="submit" value="find my movie">
+				</fieldset>
+			</form>
+		</main>
+		<footer>
+			<p>Design/code by Christina Spencer, 2016</p>
+			<p>This product uses The Movie Database (TMDb) API but is not endorsed or certified by TMDb.</p>
+		</footer>
+	</div><!-- closing wrapper -->
+	</div><!-- closing overlay -->
 
-					<label for="option4"><p>artist</p></label>
-					<input type="radio" name="occupation" id="option4" value="artist" required>
-					
-					<label for="option5"><p>identity-crisis</p></label>
-					<input type="radio" name="occupation" id="option5" value="identityCrisis" required>
-				</div>
-			</fieldset>
-			<fieldset class="Type">
-				<h3>What kind of name do you want?</h3>
-				<div class="flexContainer typeContainer">
-					<label for="Type"><p>g-rated</p></label>
-					<input type="radio" name="Type" id="Type" value="G-Rated" required>
-
-					<label for="Funny"><p>funny</p></label>
-					<input type="radio" name="Type" id="Funny" value="Funny">
-
-					<label for="wtf"><p>wtf</p></label>
-					<input type="radio" name="Type" id="wtf" value="wtf">
-				</div>
-			</fieldset>
-			<fieldset class="size">
-				<h3> What size is your dog?</h3>
-				<div class="flexContainer sizeContainer">
-					<label for="Small"><p>small</p></label>
-					<input type="radio" name="size" id="Small" value="small" required>
-					<label for="Large"><p>large</p></label>
-					<input type="radio" name="size" id="Large" value="large">
-				</div>
-			</fieldset>
-			<div class="submitContainer">
-				<input type="submit" value="name my dog">
-				<!-- <input type="submit" value="randomize!"> -->
-			</div>
-		</form>
-	<!-- FORM ENDS -->
-
-	</main>
-	<section class="results wrapper">
-		<!-- <button>randomize!</button> -->
-	</section>
-	<footer>
-		<p>share this with the world <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></p>
-		<p>// made by Christina Spencer & Erin Carrieres, 2016.</p>
-	</footer>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="script.js"></script>
 	<script src="https://use.fontawesome.com/f653ee54f9.js"></script>
+
 </body>
 </html>

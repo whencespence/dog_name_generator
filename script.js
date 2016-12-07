@@ -1,296 +1,84 @@
-$(function() {
-	var occupation = {
-			programmer: [
-				{
-					name: 'meme',
-					type: 'Funny'
-				},
-				{
-					name: 'megabyte',
-					type: 'Funny'
-				},
-				{
-					name: 'sass',
-					type: 'Funny'
-				},
-				{
-					name: 'div',
-					type: 'wtf'
-				},
-				{
-					name: 'wifi',
-					type: 'wtf'
-				},
-				{
-					name: 'lorem',
-					type: 'wtf'
-				},
-				{
-					name: 'pixel',
-					type: 'G-Rated'
-				},
-				{
-					name: 'computer',
-					type: 'G-Rated'
-				},
-				{
-					name: 'typo',
-					type: 'G-Rated'
-				}
-			],
-			foodie: [
-				{
-					name: 'burger',
-					type: 'Funny'
-				},
-				{
-					name: 'cilantro',
-					type: 'Funny'
-				},
-				{
-					name: 'noodle',
-					type: 'Funny'
-				},
-				{
-					name: 'spoon',
-					type: 'wtf'
-				},
-				{
-					name: 'crouton',
-					type: 'wtf'
-				},
-				{
-					name: 'servingplate',
-					type: 'wtf'
-				},
-				{
-					name: 'broccoli',
-					type: 'G-Rated'
-				},
-				{
-					name: 'paprika',
-					type: 'G-Rated'
-				},
-				{
-					name: 'corn',
-					type: 'G-Rated'
-				}
-			],
-			athlete: [
-				{
-					name: 'sixpack',
-					type: 'Funny'
-				},
-				{
-					name: 'basketball',
-					type: 'Funny'
-				},
-				{
-					name: 'hogan',
-					type: 'Funny'
-				},
-				{
-					name: 'chafe',
-					type: 'wtf'
-				},
-				{
-					name: 'perspire',
-					type: 'wtf'
-				},
-				{
-					name: 'plank',
-					type: 'wtf'
-				},
-				{
-					name: 'dumbbell',
-					type: 'G-Rated'
-				},
-				{
-					name: 'stretch',
-					type: 'G-Rated'
-				},
-				{
-					name: 'shaq',
-					type: 'G-Rated'
-				}
-			],
+var movieApp = {};
+var mainUrl = 'https://api.themoviedb.org/3'
+var apiKey = '0b1c7c5c2394feebe7dae33c9fcadf2b'
+movieApp.movieResults = [];
 
-			artist: [
-				{
-					name: 'andywarhol',
-					type: 'Funny'
-				},
-				{
-					name: 'frida',
-					type: 'Funny'
-				},
-				{
-					name: 'monalisa',
-					type: 'Funny'
-				},
-				{
-					name: 'beret',
-					type: 'wtf'
-				},
-				{
-					name: 'palette',
-					type: 'wtf'
-				},
-				{
-					name: 'brush',
-					type: 'wtf'
-				},
-				{
-					name: 'dali',
-					type: 'G-Rated'
-				},
-				{
-					name: 'Monet',
-					type: 'G-Rated'
-				},
-				{
-					name: 'Pablo',
-					type: 'G-Rated'
-				}
-			],
+//request movie data from API
+movieApp.getData = function(genreID){
+	$.ajax({
+		url: mainUrl + '/discover/movie',
+		method: 'GET',
+		dataType: 'jsonp',
+		data: {
+			api_key: apiKey,
+			format: 'json',
+			with_genres: genreID,
+			with_cast: 31//TOM HANKS!!!
+		}
+	})
+	.done(function(res){
+		var movieResults = res.results;//saving this so I can access it globally
 
-			identityCrisis: [
-				{
-					name: 'questionmark',
-					type: 'Funny'
-				},
-				{
-					name: 'rorschach',
-					type: 'Funny'
-				},
-				{
-					name: 'cat',
-					type: 'Funny'
-				},
-				{
-					name: 'bear',
-					type: 'wtf'
-				},
-				{
-					name: 'spider',
-					type: 'wtf'
-				},
-				{
-					name: 'ghost',
-					type: 'wtf'
-				},
-				{
-					name: 'blackhole',
-					type: 'G-Rated'
-				},
-				{
-					name: 'abyss',
-					type: 'G-Rated'
-				},
-				{
-					name: 'kafka',
-					type: 'G-Rated'
-				}
-			]
-		};
-	var sizeSuffix = {
-			small: [
-				{
-					suffix: '-ito',
-				},
-				{
-					suffix: '-ee',
-				}
-				// {
-				// 	suffix: '-ish',
-				// }
-			],
-			large: [
-				{
-					suffix: '-o',
-				},
-				// {
-				// 	suffix: '-ous',
-				// },
-				{
-					suffix: '-esque',
-				}
-			]
-		};
+			//make function for random index
+			var findRandomIndex = function(){
+				return Math.floor(Math.random() *
+				movieResults.length);
+			};
 
-	// Allow user to select some selections
+			//call randomIndex function
+			var randomIndex = findRandomIndex();
+			movieApp.displayMovie(movieResults[randomIndex]);
+	})
+};//end of getData function
+
+movieApp.displayMovie = function(movieResult){
+	console.log(movieResult);
+
+	//create button to reload the page
+	var resetButton = '<button class="reset">try again</button>'
+
+	//display movie result on page
+	$('main').html(`<h2 class="choice">${movieResult.original_title}</h2>`);
+	$('main').append(`<p class="desc">${movieResult.overview}</p>${resetButton}`);
+
+	//change background image to poster_path
+	var moviePath = `url('http://image.tmdb.org/t/p/original/${movieResult.poster_path}')`
+	$('body').css('background', moviePath);
+	$('body').css('background-repeat', 'no-repeat');
+	$('body').css('background-size', 'contain');
+	$('body').css('background-position', 'center right');
+	$('body').css('background-color', 'black');
+	$('footer').css(`display`, 'none');
+
+	//function that on click, reset button reloads page
+	$('.reset').on('click',function(){
+		location.reload();
+	});
+};
+
+//event listener captures user input
+movieApp.formListener = function(){
 	$('form').on('submit', function(formEvent) {
 		formEvent.preventDefault();
-		// with those values, filter the occupation option, type option and size option
-		var occupationChoice = $('input[name=occupation]:checked').val();
-		var typeChoice = $('input[name=Type]:checked').val();
-		var sizeChoice = $('input[name=size]:checked').val();
-		//create variable to hold user's occupation choice
-		var usersOccupationChoice = occupation[occupationChoice];
 
-		//create variable to hold users's size choice
-		var usersSizeChoice = sizeSuffix[sizeChoice];
-
-		//create empty array to hold user's filtered choice
-		var filteredOccupationChoice = [];
-	
-		//create for loop to run through the users occupation choice options
-		for(var i = 0; i< usersOccupationChoice.length; i = i + 1) {
-		//conditional statement that matches, then push into new filtered variable called filteredOccupationChoice
-			if(typeChoice === usersOccupationChoice[i].type) {
-				filteredOccupationChoice.push(usersOccupationChoice[i])
-			}
-		}
-		//make variable to hold random index
-		var randomIndex = Math.floor(Math.random() *
-			filteredOccupationChoice.length );
-		//make variable to hold user's random filtered occupation choice
-		var randomChoice = filteredOccupationChoice [randomIndex];
-		console.log(randomChoice);
-
-		//make variable to hold random index of size choice
-		//make variable to hold user's random filtered occupation choice
-
-		var randomSizeIndex = Math.floor(Math.random() *
-			usersSizeChoice.length );
-		var randomSizeChoice = usersSizeChoice [randomSizeIndex];
-		//if user picks small option, then suffix is cancatinated to randomIndex.title
-
-		// var nameResult = randomChoice.concat(randomSizeChoice);
-		var nameResult = randomChoice.name + randomSizeChoice.suffix;
-		// When the user selects 'name my dog' button, hide the form and reveal the results section
-
-		// var randomButton = '<button class="randomize">Randomize</button>'
-		var resetButton = '<button class="reset">reset</button>'
-		var img = `<img src="images/${randomChoice.name}.png">`
-
-		$('main').html(`<h2 class="choice">${nameResult}</h2>${img} ${resetButton}`);
-
-		$('.reset').on('click',function() {
-		     location.reload();
-		       });
-		// $('button.randomize').on('click', function(formEvent) {
-		// formEvent.preventDefault();
-
-		// Allow user to choose different name if not satisfied with option
-
-	}); // closing form submit
-// 
-	$('.occupation label p').click(function() {
-	      $(".occupation label p.clicked").removeClass("clicked");
-	      $(this).addClass('clicked');
+		//create variable to store user's choice
+		var genreID = $('input[name=question]:checked').val();
+		movieApp.getData(genreID);
 	});
+};//end of formListener function
 
-	$('.Type label p').click(function() {
-	      $(".Type label p.clicked").toggleClass("clicked");
-	      $(this).toggleClass('clicked');
-	});
+// $('.question label p').click(function() {
+// 	$(".question p.clicked").removeClass("clicked");
+// 	// $(this).addClass('clicked');
+// 	$('.question label p')
+// });
 
-	$('.size label p').click(function() {
-	      $(".size label p.clicked").toggleClass("clicked");
-	      $(this).toggleClass('clicked');
-	});
-	
-}); // doc ready closing
+//when page loads get data
+movieApp.init = function(){
+	movieApp.formListener();
+};
 
-
+//document ready
+$(document).ready(function(){
+	movieApp.init();
+});
